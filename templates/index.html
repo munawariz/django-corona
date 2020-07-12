@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is {{page_title}}</title>    
+</head>
+<body>
+    <a href="/global">Data corona global</a>
+    <a href="/list_country">Daftar Negara</a>
+
+    {% if page_title == 'Global Case' or page_title == 'Country Case' %}
+        {% if page_title == 'Country Case' %}
+            <h1>{{country}}</h1>        
+        {% endif %}
+
+        <h2>Positif : {{positif}}</h2>
+        <h2>Sembuh : {{sembuh}}</h2>
+        <h2>Meninggal : {{meninggal}}</h2>
+    {% endif %}
+
+    {% if page_title == 'List Country' %}
+    <h1 style="color: black;">List Negara</h1>
+        {% for country in country_list %}
+            <a href="/{{country}}">{{country}}</a>
+        {% endfor %}    
+    {% endif %}
+    
+</body>
+</html>
