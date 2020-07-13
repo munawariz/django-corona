@@ -2,7 +2,7 @@
   "name": "django_tailwind",
   "description": "",
   "scripts": {
-    "start": "npm run dev",
+    "start": "watch \"npm run build:postcss\" ./src",
     "build": "npm run build:clean && npm run build:sass && npm run build:postcss && npm run build:cleancss",
     "build:clean": "rimraf ../static/css",
     "build:sass": "node-sass --output-style compressed src/styles.scss ../static/css/styles.css",

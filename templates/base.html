@@ -1,0 +1,21 @@
+{% load static %}
+{% include "navbar.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"href="{% static 'css/styles.css' %}"type="text/css"/>
+        <title>Django Corona</title>    
+    </head>
+    <body>
+        {% block navbar %}        
+        {% endblock navbar %}
+
+        <div class="container mx-auto">
+            {% block content %}            
+            {% endblock content %}
+        </div>
+    </body>
+</html>

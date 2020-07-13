@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="font-semibold text-4xl m-5 text-black">List Negara</h1>
+
+<div class="grid grid-cols-5 gap-6">
+    {% for country in country_list %}
+        <div class="flex justify-center">
+            <a href="/{{country}}" class="capitalize bg-transparent hover:bg-pink-500 text-pink-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                {{country}}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}
