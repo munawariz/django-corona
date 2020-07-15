@@ -1,0 +1,46 @@
+{% block navbar %}
+  <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <div class="container mt-3">
+              <p class="h5 font-weight-bold m-3">COVID-19 TRACKER</p>
+              <hr>
+            </div>
+            <ul class="nav flex-column mt-5">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <span data-feather="home"></span>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="countries/">
+                  <span data-feather="file"></span>
+                  Country List
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tweet/">
+                  <span data-feather="users"></span>
+                  Tweet
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dev/">
+                  <span data-feather="bar-chart-2"></span>
+                  About Dev
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+{% endblock navbar %}

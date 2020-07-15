@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('global/', views.global_case),
-    path('list_country/', views.list_country),
-    re_path(r'^(?P<country_requested>[\w-]+)/$', views.country),
+    path('countries/', views.list_country),
+    re_path(r'^countries/(?P<country_requested>[\w|\W]+)/$', views.country),
 ]
