@@ -5,19 +5,22 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h1">Dashboard</h1>
         </div>
-        <h3>Global Data</h3>
+        <div>
+            <h3 class="text-capitalize">{{country}} Data</h3>
+            <div class="text-muted small">Last Updated {{last_update}}</div>
+        </div>
         <div class="row">
             <div class="col mb-1">
                 <div class="card w-100">
                     <div class="card-body">
                       <h5 class="card-title">Confirmed</h5>
-                      <p class="card-text">{{positif}} Cases</p>
+                      <p class="card-text">{{positif}} Cases</p>                                            
                     </div>
                 </div>
             </div>
             <div class="col mb-1">
                 <div class="card w-100">
-                    <div class="card-body">
+                    <div class="card-body text-success">
                       <h5 class="card-title">Recovered</h5>
                       <p class="card-text">{{sembuh}} Cases</p>
                     </div>
@@ -25,14 +28,14 @@
             </div>
             <div class="col mb-1">
                 <div class="card w-100">
-                    <div class="card-body">
+                    <div class="card-body text-danger">
                       <h5 class="card-title">Deaths</h5>
                       <p class="card-text">{{meninggal}} Cases</p>
                     </div>
                 </div>
             </div>
         </div>
-        <center class="mt-3">
+        <center class="mt-2">
             <img style="width: 70%;" src="{{gambar}}" alt="Covid-19 Infographic">
         </center>
     </main>

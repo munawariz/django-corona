@@ -1,36 +1,78 @@
 {% extends "../base.html" %}
 
 {% block content %}
+    <style>
+        .hover-item {
+            background-color: #FFF;
+        }
+
+        .hover-item:hover {
+            cursor: pointer;
+            background-color: #ccc;
+        }
+    </style>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h1">Dashboard</h1>
         </div>
-        <h3>Global Data</h3>
-        <div class="row">
+        <h3>Countries List</h3>
+        <div class="row">            
             <div class="col">
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">Confirmed</h5>
-                      <p class="card-text">{{positif}} Cases</p>
-                    </div>
-                </div>
+                <table class="table">            
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        {% for country in country_list1 %}                                
+                            <tr data-href='{{country}}' class="hover-item">
+                                <th scope="row" class="text-capitalize">{{country}}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="col">
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">Recovered</h5>
-                      <p class="card-text">{{sembuh}} Cases</p>
-                    </div>
-                </div>
+                <table class="table">            
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        {% for country in country_list2 %}                                
+                            <tr data-href='{{country}}' class="hover-item">
+                                <th scope="row" class="text-capitalize">{{country}}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="col">
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">Deaths</h5>
-                      <p class="card-text">{{meninggal}} Cases</p>
-                    </div>
-                </div>
+                <table class="table">            
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        {% for country in country_list3 %}                                
+                            <tr data-href='{{country}}' class="hover-item">
+                                <th scope="row" class="text-capitalize">{{country}}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
+
+    <script>
+        $(document).ready(function() {
+            $(document.body).on("click", "tr[data-href]", function () {
+                window.location.href = this.dataset.href;
+            });
+        });
+    </script>
 {% endblock content %}
