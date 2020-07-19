@@ -1,6 +1,5 @@
 {% load static %}
 {% include "components/navbar.html" %}
-{% include "included/fonts.html" %}
 {% include "included/css.html" %}
 {% include "included/js.html" %}
 
@@ -21,15 +20,20 @@
         <title>Django Corona</title>
     </head>
     <body>
-        {% block navbar %}        
-        {% endblock navbar %}
-
-        {% block content %}            
-        {% endblock content %}
-
-        {% block footer %}
-        {% endblock footer %}
-
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    {% block navbar %}        
+                    {% endblock navbar %}
+                </div>
+                <div class="col-10">
+                    <main role="main" class="ml-sm-auto pt-3 px-4">
+                        {% block content %}
+                        {% endblock content %}
+                    </main>
+                </div>
+            </div>
+        </div>
         {% block javascript %}
         {% endblock javascript %}
     

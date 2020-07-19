@@ -6,15 +6,15 @@
     </div>
     
     <div>
-        <h3 class="text-capitalize">{{data.name}} Data</h3>
-        <div class="text-muted small">Last Updated {{latest_date}}</div>
+        <h3 class="text-capitalize">Global Data</h3>
+        <div class="text-muted small">Last Updated {{data.date}}</div>
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-12 mb-1">
             <div class="card w-100">
                 <div class="card-body">
                 <h5 class="card-title">Confirmed</h5>
-                <p class="card-text">{{data.latest_data.confirmed}} Cases</p>                                            
+                <p class="card-text">{{data.confirmed}} Cases</p>                                            
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="card w-100">
                 <div class="card-body text-success">
                 <h5 class="card-title">Recovered</h5>
-                <p class="card-text">{{data.latest_data.recovered}} Cases</p>
+                <p class="card-text">{{data.recovered}} Cases</p>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="card w-100">
                 <div class="card-body text-danger">
                 <h5 class="card-title">Deaths</h5>
-                <p class="card-text">{{data.latest_data.deaths}} Cases</p>
+                <p class="card-text">{{data.deaths}} Cases</p>
                 </div>
             </div>
         </div>
@@ -50,12 +50,10 @@
                         <p class="card-text text-success">Recovered: {{prev.recovered}}</p>                        
                         <p class="card-text text-success">New Recovered: {{prev.new_recovered}}</p>
                         <p class="card-text text-danger">Deaths: {{prev.deaths}}</p>                                            
-                        <p class="card-text text-danger">New Deaths: {{prev.new_deaths}}</p>
+                        <p class="card-text text-danger">New Deaths: {{prev.new_deaths}}</p>                
                     </div>
                 </div>
             </div>
-        {% empty %}
-            <h6 class="text-muted ml-3">Sorry there is no previous data</h6>
         {% endfor %}
     </div>
 {% endblock content %}

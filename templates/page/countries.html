@@ -11,62 +11,61 @@
             background-color: #ccc;
         }
     </style>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h1">Dashboard</h1>
+    
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h1">Dashboard</h1>
+    </div>
+    <h3>Countries List</h3>
+    <div class="row">            
+        <div class="col">
+            <table class="table">            
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Country</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    {% for code, country in dict_list1.items %}                                
+                        <tr data-href='{{code}}' class="hover-item">
+                            <th scope="row" class="text-capitalize">{{country}}</th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-        <h3>Countries List</h3>
-        <div class="row">            
-            <div class="col">
-                <table class="table">            
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Country</th>
+        <div class="col">
+            <table class="table">            
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Country</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    {% for code, country in dict_list2.items %}                                
+                        <tr data-href='{{code}}' class="hover-item">
+                            <th scope="row" class="text-capitalize">{{country}}</th>
                         </tr>
-                    </thead>
-                    <tbody>                
-                        {% for country in country_list1 %}                                
-                            <tr data-href='{{country}}' class="hover-item">
-                                <th scope="row" class="text-capitalize">{{country}}</th>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <table class="table">            
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Country</th>
-                        </tr>
-                    </thead>
-                    <tbody>                
-                        {% for country in country_list2 %}                                
-                            <tr data-href='{{country}}' class="hover-item">
-                                <th scope="row" class="text-capitalize">{{country}}</th>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <table class="table">            
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Country</th>
-                        </tr>
-                    </thead>
-                    <tbody>                
-                        {% for country in country_list3 %}                                
-                            <tr data-href='{{country}}' class="hover-item">
-                                <th scope="row" class="text-capitalize">{{country}}</th>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-    </main>
+        <div class="col">
+            <table class="table">            
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Country</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    {% for code, country in dict_list3.items %}                                
+                        <tr data-href='{{code}}' class="hover-item">
+                            <th scope="row" class="text-capitalize">{{country}}</th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script>
         $(document).ready(function() {

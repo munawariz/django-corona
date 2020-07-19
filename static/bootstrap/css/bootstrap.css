@@ -51,6 +51,15 @@
   font-family: 'Product';
 }
 
+@font-face{
+  font-family: 'Product-Bold';
+  src: url('../../djcovid/fonts/product-sans-bold.ttf');
+}
+
+.text-product-bold{
+  font-family: 'Product-Bold';
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
