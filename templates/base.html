@@ -1,0 +1,41 @@
+{% load static %}
+{% include "components/navbar.html" %}
+{% include "included/css.html" %}
+{% include "included/js.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        {% block fonts %}        
+        {% endblock fonts %}
+
+        {% block stylesheet %}            
+        {% endblock stylesheet %}
+        
+        <title>Django Corona</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    {% block navbar %}        
+                    {% endblock navbar %}
+                </div>
+                <div class="col-10">
+                    <main role="main" class="ml-sm-auto pt-3 px-4">
+                        {% block content %}
+                        {% endblock content %}
+                    </main>
+                </div>
+            </div>
+        </div>
+        {% block javascript %}
+        {% endblock javascript %}
+    
+    </body>
+</html>
