@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 import requests
 from django.conf.urls import handler404
+import pandas as pd
+from datetime import datetime
 
 
 def index(request):
@@ -58,16 +60,23 @@ def country(request, *, country_requested):
     try:
         data = requests.get(f'https://corona-api.com/countries/{country_requested}').json()
         last_data = data['data']
-        prev_data = []
+        prev_data = []        
+        timeline_data = []
         
         try:
-            for x in range(3):            
-                timeline = data['data']['timeline'][x+1]
+            for x in range(3):                       
+                timeline = data['data']['timeline'][x+1]   
                 if timeline:
+                    # dates = datetime.strptime(timeline['date'] , '%Y-%m-%d')
+                    # timeline_data.append([dates, int(timeline['confirmed']), int(timeline['recovered']), int(timeline['deaths'])])
+                    timeline_data.append(['ok', 21, 22, 23])
                     prev_data.append(timeline)
         except IndexError:
             pass
 
+        df = pd.DataFrame(timeline_data, columns=['Date', 'Confirmed', 'Recovered', 'Deaths'])
+        df.plot(title=f'ok COVID-19 Case')
+        
         context = {
             'data': last_data,
             'latest_date': last_data['updated_at'][0:10],
