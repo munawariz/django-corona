@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotFound
 import requests
 from django.conf.urls import handler404
-import pandas as pd
 from datetime import datetime
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.io as pio
+pio.templates.default = "simple_white"
+import plotly.express as px
+import plotly.offline as opy
 
 
 def index(request):
@@ -60,27 +64,31 @@ def country(request, *, country_requested):
     try:
         data = requests.get(f'https://corona-api.com/countries/{country_requested}').json()
         last_data = data['data']
-        prev_data = []        
+        country_name = last_data['name']     
         timeline_data = []
         
         try:
-            for x in range(3):                       
+            for x in range(100):                       
                 timeline = data['data']['timeline'][x+1]   
                 if timeline:
-                    # dates = datetime.strptime(timeline['date'] , '%Y-%m-%d')
-                    # timeline_data.append([dates, int(timeline['confirmed']), int(timeline['recovered']), int(timeline['deaths'])])
-                    timeline_data.append(['ok', 21, 22, 23])
-                    prev_data.append(timeline)
+                    timeline_data.append([str(timeline['date']), int(timeline['confirmed']), int(timeline['recovered']), int(timeline['deaths'])])
+            
+            df = pd.DataFrame(timeline_data, columns=['Date', 'Confirmed', 'Recovered', 'Deaths'])
+            df = df[::-1]
+            df_long = pd.melt(df, id_vars=['Date'], value_vars=['Confirmed', 'Recovered', 'Deaths'])            
+            country_fig = px.line(df_long, x="Date", y="value", color='variable')
+            country_fig.update_layout(
+                autosize = True,
+                margin=dict(l=0, r=0, t=10, b=0),
+            )
+            div = opy.plot(country_fig, output_type='div', auto_open=False)
         except IndexError:
-            pass
-
-        df = pd.DataFrame(timeline_data, columns=['Date', 'Confirmed', 'Recovered', 'Deaths'])
-        df.plot(title=f'ok COVID-19 Case')
+            div = None
         
         context = {
             'data': last_data,
             'latest_date': last_data['updated_at'][0:10],
-            'prev_data': prev_data,
+            'graph' : div,
         }
     
         return render(request, 'page/case.html', context)
