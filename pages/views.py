@@ -136,6 +136,7 @@ def get_scattergeo():
         ],
         size = df['Confirmed'],
         labels = {'Name': 'Country Name'},
+        projection = 'natural earth',
     )
 
     map_fig.update_layout(
